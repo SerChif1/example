@@ -1,4 +1,10 @@
-console.log('hello hello');
-//console.log(myVar);
-myVar = 20;
-console.log(myVar);
+let title;
+let screens;
+let screenPrice;
+let rollback;
+let fullPrice;
+let adaptive;
+
+alert("какоето сообщение");
+
+console.log("text in console");

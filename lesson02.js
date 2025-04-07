@@ -8,7 +8,7 @@ function multiply(number) {
         product *= digit;
     }
 
-    let cubeResult = product * product * product;
+    let cubeResult = product ** 3;
 
     console.log(cubeResult);
 }
@@ -30,3 +30,5 @@ function multiply2(number) {
 }
 
 multiply2(num);
+
+console.log(typeof num);;

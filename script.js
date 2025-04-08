@@ -65,3 +65,5 @@ showTipeOf(adaptive);
 console.log(getRollbackMessage(fullPrice));
 console.log(screens.length);
 console.log(servicePercentPrice);
+
+console.log('Стоимость верстки экранов' + screenPrice + 'рублей/ долларов/гривен/юани \n Стоимость разработки сайта' + fullPrice + 'рублей/ долларов/гривен/юани');

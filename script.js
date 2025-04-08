@@ -1,6 +1,6 @@
 'use strict';
-
-let title = prompt('Как называется проект?');
+// остановился пятый урок, видео "практика" 7 минута.
+let title = prompt('Как называется проект?', 'Калькулятор верстки');
 let screens = prompt('Какие типы экранов нужно разраболтать?', 'Простые, Сложные, Интерактивные');
 let screenPrice = Number(prompt('сколько будет стоить данная работа?'));
 let adaptive = confirm('Нужен ли адаптив на сайте?');
@@ -9,27 +9,31 @@ let rollback = 50;
 let allServicePrice;
 let fullPrice;
 let servicePercentPrice;
+let service1
+let service2
 
-let service1 = prompt('Какой вид дополнительных услуг необходим?');
-let servicePrice1 = parseInt(prompt('Сколько это будет стоить?'));
-let service2 = prompt('Какой вид дополнительных услуг необходим?');
-let servicePrice2 = parseFloat(prompt('Сколько это будет стоить?'));
+const getAllServicePrice = function () {
+    let sum = 0;
+
+    for (let i = 0; i < 2; i++) {
+
+        if (i === 0) {
+            service1 = prompt('Какой вид дополнительных услуг необходим?');
+        } else if (i === 1) {
+            service2 = prompt('Какой вид дополнительных услуг необходим?');
+        }
+        sum += +prompt('Сколько это будет стоить?');
+    }
+    return sum;
+}
 
 const showTipeOf = function (variable) {
     console.log(variable, typeof variable);
-};
-
-const getAllServicePrice = function () {
-    return servicePrice1 + servicePrice2;
-};
-
-
+}
 
 function getFullPrice() {
     return screenPrice + allServicePrice;
-};
-
-
+}
 
 function getTitle(title) {
 
@@ -38,13 +42,11 @@ function getTitle(title) {
     if (title.length === 0) return title;
 
     return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
-};
-
+}
 
 function getServicePercentPrice() {
     return fullPrice - rollback;
-};
-
+}
 
 const getRollbackMessage = function (price) {
     if (price >= 30000) return 'Даем скидку 10%';
@@ -62,8 +64,10 @@ showTipeOf(title)
 showTipeOf(screenPrice);
 showTipeOf(adaptive);
 
+console.log('allServicePrice', allServicePrice);
+
 console.log(getRollbackMessage(fullPrice));
 console.log(screens.length);
 console.log(servicePercentPrice);
 
-console.log('Стоимость верстки экранов' + screenPrice + 'рублей/ долларов/гривен/юани \n Стоимость разработки сайта' + fullPrice + 'рублей/ долларов/гривен/юани');
+console.log('Стоимость верстки экранов ' + screenPrice + ' рублей/ долларов/гривен/юани \n Стоимость разработки сайта ' + fullPrice + ' рублей/ долларов/гривен/юани');

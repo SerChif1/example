@@ -3,8 +3,13 @@
 let title = prompt('Как называется проект?');
 let screens = prompt('Какие типы экранов нужно разраболтать?', 'Простые, Сложные, Интерактивные');
 let screenPrice = Number(prompt('сколько будет стоить данная работа?'));
-let rollback = 50;
 let adaptive = confirm('Нужен ли адаптив на сайте?');
+
+let rollback = 50;
+let allServicePrice;
+let fullPrice;
+let servicePercentPrice;
+
 let service1 = prompt('Какой вид дополнительных услуг необходим?');
 let servicePrice1 = parseInt(prompt('Сколько это будет стоить?'));
 let service2 = prompt('Какой вид дополнительных услуг необходим?');
@@ -18,13 +23,12 @@ const getAllServicePrice = function () {
     return servicePrice1 + servicePrice2;
 };
 
-let allServicePrice = getAllServicePrice();
+
 
 function getFullPrice() {
     return screenPrice + allServicePrice;
 };
 
-let fullPrice = getFullPrice();
 
 
 function getTitle(title) {
@@ -36,13 +40,11 @@ function getTitle(title) {
     return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
 };
 
-title = getTitle(title);
 
 function getServicePercentPrice() {
     return fullPrice - rollback;
 };
 
-let servicePercentPrice = getServicePercentPrice();
 
 const getRollbackMessage = function (price) {
     if (price >= 30000) return 'Даем скидку 10%';
@@ -51,10 +53,15 @@ const getRollbackMessage = function (price) {
     else return 'что то пошло не так';
 };
 
+allServicePrice = getAllServicePrice();
+fullPrice = getFullPrice();
+servicePercentPrice = getServicePercentPrice();
+title = getTitle(title);
+
 showTipeOf(title)
 showTipeOf(screenPrice);
 showTipeOf(adaptive);
 
-console.log(screens);
 console.log(getRollbackMessage(fullPrice));
+console.log(screens.length);
 console.log(servicePercentPrice);

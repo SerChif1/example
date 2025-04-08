@@ -1,9 +1,4 @@
-// alert('Че кого');
-// let x = confirm('hi men');
-// let y = prompt('wot is you age?');
-// console.log(x);
-// console.log(y);
-// console.log(x, y);
+'use strict';
 
 let title = prompt('Как называется проект?');
 let screens = prompt('Какие типы экранов нужно разраболтать?', 'Простые, Сложные, Интерактивные');
@@ -14,23 +9,52 @@ let service1 = prompt('Какой вид дополнительных услуг
 let servicePrice1 = parseInt(prompt('Сколько это будет стоить?'));
 let service2 = prompt('Какой вид дополнительных услуг необходим?');
 let servicePrice2 = parseFloat(prompt('Сколько это будет стоить?'));
-let fullPrice = screenPrice + servicePrice1 + servicePrice2;
-let servicePercentPrice = Math.ceil(fullPrice - rollback);
 
-console.log(title);
+const showTipeOf = function (variable) {
+    console.log(variable, typeof variable);
+};
+
+const getAllServicePrice = function () {
+    return servicePrice1 + servicePrice2;
+};
+
+let allServicePrice = getAllServicePrice();
+
+function getFullPrice() {
+    return screenPrice + allServicePrice;
+};
+
+let fullPrice = getFullPrice();
+
+
+function getTitle(title) {
+
+    title = title.trim();
+
+    if (title.length === 0) return title;
+
+    return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+};
+
+title = getTitle(title);
+
+function getServicePercentPrice() {
+    return fullPrice - rollback;
+};
+
+let servicePercentPrice = getServicePercentPrice();
+
+const getRollbackMessage = function (price) {
+    if (price >= 30000) return 'Даем скидку 10%';
+    else if (price >= 15000 && fullPrice < 30000) return 'скидка 5%';
+    else if (price > 0 && fullPrice < 15000) return 'скидка не предусмотренна';
+    else return 'что то пошло не так';
+};
+
+showTipeOf(title)
+showTipeOf(screenPrice);
+showTipeOf(adaptive);
+
 console.log(screens);
-console.log(screenPrice);
-console.log(servicePrice1);
-console.log(servicePrice2);
-console.log(fullPrice);
-console.log(adaptive);
-console.log(screens.length);
-console.log('Стоимость верстки экранов' + screenPrice + 'рублей/ долларов/гривен/юани \n Стоимость разработки сайта' + fullPrice + 'рублей/ долларов/гривен/юани');
-console.log(screens.toLowerCase().split());
-console.log(fullPrice * (rollback / 100));
+console.log(getRollbackMessage(fullPrice));
 console.log(servicePercentPrice);
-
-if (fullPrice >= 30000) console.log('Даем скидку 10%');
-else if (fullPrice >= 15000 && fullPrice < 30000) console.log('скидка 5%');
-else if (fullPrice > 0 && fullPrice < 15000) console.log('скидка не предусмотренна');
-else console.log('что то пошло не так'); 

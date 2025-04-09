@@ -1,16 +1,36 @@
 'use strict';
 // остановился пятый урок, видео "практика" 7 минута.
-let title = prompt('Как называется проект?', 'Калькулятор верстки');
-let screens = prompt('Какие типы экранов нужно разраболтать?', 'Простые, Сложные, Интерактивные');
-let screenPrice = Number(prompt('сколько будет стоить данная работа?'));
-let adaptive = confirm('Нужен ли адаптив на сайте?');
+let title;
+let screens;
+let screenPrice;
+let adaptive;
 
 let rollback = 50;
 let allServicePrice;
 let fullPrice;
 let servicePercentPrice;
-let service1
-let service2
+let service1;
+let service2;
+
+const isNumber = function (num) {
+    return !isNaN(parseFloat(num)) && isFinite(num)
+}
+
+const asking = function () {
+    title = prompt('Как называется проект?', 'Калькулятор верстки');
+    screens = prompt('Какие типы экранов нужно разраболтать?', 'Простые, Сложные, Интерактивные');
+
+    do {
+        screenPrice = prompt('сколько будет стоить данная работа?');
+        if (screenPrice === null) {
+            console.log('ввод отменен');
+            return;
+        }
+        screenPrice = +screenPrice.trim();
+    } while (!isNumber(screenPrice));
+
+    adaptive = confirm('Нужен ли адаптив на сайте?');
+}
 
 const getAllServicePrice = function () {
     let sum = 0;
@@ -22,7 +42,14 @@ const getAllServicePrice = function () {
         } else if (i === 1) {
             service2 = prompt('Какой вид дополнительных услуг необходим?');
         }
-        sum += +prompt('Сколько это будет стоить?');
+        do {
+            let input = prompt('Сколько это будет стоить?');
+            if (input === null) {
+                console.log('ввод отменен');
+                return;
+            }
+            sum += +input.trim();
+        } while (!isNumber(sum));
     }
     return sum;
 }
@@ -55,6 +82,7 @@ const getRollbackMessage = function (price) {
     else return 'что то пошло не так';
 };
 
+asking();
 allServicePrice = getAllServicePrice();
 fullPrice = getFullPrice();
 servicePercentPrice = getServicePercentPrice();

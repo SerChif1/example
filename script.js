@@ -1,5 +1,5 @@
 'use strict';
-// остановился пятый урок, видео "практика" 7 минута.
+
 let title;
 let screens;
 let screenPrice;

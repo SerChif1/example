@@ -26,6 +26,6 @@ function isPrime(num) {
 
 for (let i = 1; i <= 100; i++) {
     if (isPrime(i)) {
-        console.log('${i} - Делитель этого числа: 1 и ${i}');
+        console.log(`${i} - Делитель этого числа: 1 и ${i}`);
     }
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,6 +10,34 @@
 
 <body>
     <p>для всякой фигни</p>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Example</title>
+</head>
+
+<body>
+    <h1 id="title">Hello, World!</h1>
+    <button id="changeTextButton">Change Text</button>
+
+    <script>
+        // Получаем элемент по ID
+        const titleElement = document.getElementById('title');
+        const button = document.getElementById('changeTextButton');
+
+        // Добавляем обработчик события на кнопку
+        button.addEventListener('click', () => {
+            // Изменяем текст заголовка
+            titleElement.textContent = 'Text Changed!';
+        });
+    </script>
 </body>
 
 </html>
